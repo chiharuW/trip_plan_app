@@ -1,0 +1,26 @@
+ <h2>会員一覧</h2>
+
+ <table class="admin_users has_border">
+	<thead>
+		<tr>
+			<th>会員ID</th>
+			<th>ユーザー名</th>
+			<th>状態</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @users.each do |user| %>
+			<tr>
+				<td class="text-center"><%= user.id %></td>
+				<td><%= link_to user.name, admin_user_path(user), class: "underline" %></td>
+				<td>
+					<% if user.is_active? %>
+						<span class="text-active">販売中</span>
+					<% else %>
+						<span class="text-invalid">販売停止中</span>
+					<% end %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
